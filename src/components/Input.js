@@ -11,7 +11,6 @@ class CustomizeInput extends React.Component {
   }
   render() {
     const { value = "", ...otherProps } = this.props;
-    console.log(123);
     return (
       <div style={{ padding: 10 }}>
         <Input style={{ outline: "none" }} value={value} {...otherProps} />
