@@ -1,14 +1,9 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 
-export default class Login extends Component {
-  constructor() {
-    this.state = {
-      a: 12,
-      b: 132,
-      c: "ljmissir",
-    };
-  }
-  render() {
-    return <div>LoginPage</div>;
-  }
-}
+export default Login = (props) => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    console.log(loading);
+  }, []);
+  return <div></div>;
+};

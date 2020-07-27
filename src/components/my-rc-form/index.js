@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default function createForm(Cmp) {
+export default (WrappedComponent) => {
   return class extends Component {
     constructor(props) {
       super(props);
@@ -15,7 +15,7 @@ export default function createForm(Cmp) {
     };
 
     setFieldsValue = (newStore) => {
-      this.setState({ newStore });
+      this.setState(newStore);
     };
 
     getFieldsValue = () => {
@@ -66,7 +66,7 @@ export default function createForm(Cmp) {
       };
     };
     render() {
-      return <Cmp {...this.props} {...this.getForm()} />;
+      return <WrappedComponent {...this.props} {...this.getForm()} />;
     }
   };
-}
+};

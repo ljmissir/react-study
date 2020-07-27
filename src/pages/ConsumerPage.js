@@ -1,3 +1,8 @@
+/**
+ * author：JeremyLiao
+ * title：context跨层级跨组件间传值
+ * description：此处展示的是用Consumer（消费组件）来作为一个组件并在组件内部取的context所传递的值
+ */
 import React, { Component } from "react";
 import { ThemeConsumer, UserConsumer } from "../Context";
 

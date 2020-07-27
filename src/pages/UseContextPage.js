@@ -1,3 +1,8 @@
+/**
+ * author：JeremyLiao
+ * title：context跨层级跨组件间传值
+ * description：此处展示的是用React内置的 useContext方法来获取所传值
+ */
 import React, { useContext } from "react";
 import { ThemeContext, UserContext } from "../Context";
 

@@ -11,7 +11,7 @@ module.exports = override(
     libraryName: "antd",
     libraryDirectory: "es",
     // style设为true需要安装less和less-loader
-    style: false,
+    style: "css",
   }),
   addLessLoader({
     javascriptEnabled: true,

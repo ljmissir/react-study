@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { createForm } from "rc-form";
-import createForm from "../components/my-rc-form";
+import createForm from "../components/rc-form";
 import Input from "../components/Input";
 
 const nameRules = {
@@ -16,6 +16,12 @@ const passworRules = {
 
 @createForm
 class MyRCForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   componentDidMount() {
     const { setFieldsValue } = this.props.form;
     setFieldsValue({ username: 18676388628 });
