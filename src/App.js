@@ -6,7 +6,7 @@ import MyRCForm from "./pages/MyRCForm";
 import "./App.css";
 
 function App(props) {
-  return <ContextPage />;
+  return <MyRCFieldForm />;
 }
 
 export default App;

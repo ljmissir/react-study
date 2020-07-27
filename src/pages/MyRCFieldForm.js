@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from "react";
-import Form, { Field } from "../components/my-rc-field-form";
+import Form, { Field } from "../components/my-rc-field-form/index";
 import Input from "../components/Input";
+import { Button } from "antd";
 
 const nameRules = { required: true, message: "请输入姓名！" };
 const passworRules = { required: true, message: "请输入密码！" };
@@ -9,12 +10,12 @@ export default function MyRCFieldForm() {
   const [form] = Form.useForm();
 
   const onFinish = (val) => {
-    console.log("onFinish", val); //sy-log
+    console.log("onFinish", val);
   };
 
   // 表单校验失败执行
   const onFinishFailed = (val) => {
-    console.log("onFinishFailed", val); //sy-log
+    console.log("onFinishFailed", val);
   };
 
   useEffect(() => {
@@ -29,7 +30,9 @@ export default function MyRCFieldForm() {
       <Field name="password" rules={[passworRules]}>
         <Input placeholder="输入密码" />
       </Field>
-      <button>登录</button>
+      <Button type="primary" onClick={form.submit}>
+        登录
+      </Button>
     </Form>
   );
 }
