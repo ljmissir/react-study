@@ -1,6 +1,6 @@
 import React from "react";
-import Form, { Field } from "../components/rc-field-form/index";
-import Input from "../components/Input";
+import Form, { Field } from "../../components/day01/rc-field-form/index";
+import Input from "../../components/day01/Input";
 
 const nameRules = { required: true, message: "请输入姓名！" };
 const passworRules = { required: true, message: "请输入密码！" };

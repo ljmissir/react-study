@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { createForm } from "rc-form";
-import createForm from "../components/my-rc-form";
-import Input from "../components/Input";
+import createForm from "../../components/day01/my-rc-form";
+import Input from "../../components/day01/Input";
 
 const nameRules = {
   required: true,

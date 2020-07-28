@@ -4,7 +4,7 @@
  * description：此处展示的是用static contextType来获取context上下文，并取到themeColor值
  */
 import React, { Component } from "react";
-import { ThemeContext } from "../Context";
+import { ThemeContext } from "../../Context";
 import { Button } from "antd";
 
 export default class ContextType extends Component {
