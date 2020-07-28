@@ -1,5 +1,5 @@
 export default function createStore(reducer) {
-  let currentState = 0;
+  let currentState;
   let currentListeners = [];
 
   function getState() {
@@ -14,6 +14,8 @@ export default function createStore(reducer) {
   function subscribe(listener) {
     currentListeners.push(listener);
   }
+
+  dispatch({ type: "REDUX" });
 
   return {
     getState,
