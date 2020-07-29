@@ -1,8 +1,10 @@
-// import { createStore } from "redux";
-import { createStore, applyMiddleware } from "../k-redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+// import { createStore, applyMiddleware, combineReducers } from "../k-redux";
+import reducers from "./reducers";
 import isPromise from "is-promise";
+console.log(reducers, 666);
 
-const reducer = (initialState = 0, action) => {
+const countReducer = (initialState = 0, action) => {
   switch (action.type) {
     case "INCREASE":
       return initialState + 1;
@@ -13,7 +15,20 @@ const reducer = (initialState = 0, action) => {
   }
 };
 
-const store = createStore(reducer, applyMiddleware(logger, thunk, promise));
+const goodsReducer = (initialState = [], action) => {
+  switch (action.type) {
+    case "ADDGOOD":
+      return [...initialState, ...action.payload];
+    case "DELETEGOOD":
+      return [...initialState, ...action.payload];
+    default:
+      return initialState;
+  }
+};
+
+// const reducers = combineReducers({ countReducer, goodsReducer });
+
+const store = createStore(reducers, applyMiddleware(logger, thunk, promise));
 // const store = applyMiddleware(logger, thunk)(createStore)(reducer);
 
 export default store;
