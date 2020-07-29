@@ -1,4 +1,7 @@
-export default function createStore(reducer) {
+export default function createStore(reducer, enhancer) {
+  if (enhancer) {
+    return enhancer(createStore)(reducer);
+  }
   let currentState;
   let currentListeners = [];
 
@@ -13,6 +16,9 @@ export default function createStore(reducer) {
 
   function subscribe(listener) {
     currentListeners.push(listener);
+    return () => {
+      currentListeners.filter((item) => item === listener);
+    };
   }
 
   dispatch({ type: "REDUX" });

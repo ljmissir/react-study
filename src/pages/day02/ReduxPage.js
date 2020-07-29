@@ -1,29 +1,20 @@
 import React, { Component } from "react";
 // import createStore from "../../store/k-store";
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
-
-const reducer = (initialState = 0, action) => {
-  switch (action.type) {
-    case "INCREASE":
-      return initialState + 1;
-    case "DECREASE":
-      return initialState - 1;
-    default:
-      return initialState;
-  }
-};
-
-const store = createStore(reducer, applyMiddleware(logger, thunk));
-// const store = applyMiddleware(logger, thunk)(createStore)(reducer);
+import store from "../../store";
+// import logger from "redux-logger";
+// import thunk from "redux-thunk";
 
 export default class ReduxPage extends Component {
   componentDidMount() {
-    store.subscribe(() => {
+    this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
-      console.log(store.getState());
     });
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   addCount = () => {
@@ -34,13 +25,20 @@ export default class ReduxPage extends Component {
     store.dispatch((dispatch, getState) => {
       setTimeout(() => {
         dispatch({ type: "INCREASE" });
-        console.log("getState", getState());
       }, 1000);
     });
   };
 
   decreaseCount = () => {
     store.dispatch({ type: "DECREASE" });
+  };
+
+  promiseAddCount = () => {
+    store.dispatch(
+      Promise.resolve({
+        type: "INCREASE",
+      })
+    );
   };
 
   render() {
@@ -50,6 +48,7 @@ export default class ReduxPage extends Component {
         <button onClick={this.addCount}>increase</button>
         <button onClick={this.decreaseCount}>decrease</button>
         <button onClick={this.asyncAddCount}>async increase</button>
+        <button onClick={this.promiseAddCount}>promise increase</button>
       </div>
     );
   }
@@ -83,4 +82,3 @@ function compose(...funcs) {
 }
 
 const res = compose(f1, f2, f3)("ljmissir");
-// console.log(res);
