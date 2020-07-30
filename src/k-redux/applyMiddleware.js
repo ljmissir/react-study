@@ -1,3 +1,6 @@
+import { compose, curry } from "../utils";
+
+// !实现applyMiddleware()中间件
 export default function applyMiddleware(...middlewares) {
   return (createStore) => (reducer) => {
     const store = createStore(reducer);
@@ -8,6 +11,7 @@ export default function applyMiddleware(...middlewares) {
     };
     const middlewareChain = middlewares.map((middleware) => middleware(midApi));
 
+    // !加强dispatch
     dispatch = compose(...middlewareChain)(store.dispatch);
 
     return {
@@ -15,14 +19,4 @@ export default function applyMiddleware(...middlewares) {
       dispatch,
     };
   };
-}
-
-function compose(...funcs) {
-  if (funcs.length === 0) {
-    return (arg) => arg;
-  }
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-  return funcs.reduce((prev, cur) => (...args) => prev(cur(...args)));
 }
