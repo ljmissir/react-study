@@ -1,8 +1,8 @@
-import { combineReducers } from "../k-redux/index";
+import { combineReducers } from "redux";
 import count from "./count";
-import goods from "./goods";
+import products from "./products";
 
 export default combineReducers({
   count,
-  goods,
+  products,
 });

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-// import createStore from "../../store/k-store";
 import store from "../../store";
-// import logger from "redux-logger";
-// import thunk from "redux-thunk";
 
 export default class ReduxPage extends Component {
   componentDidMount() {
@@ -41,14 +38,53 @@ export default class ReduxPage extends Component {
     );
   };
 
+  addProduct = () => {
+    const product = {
+      productName: "apple",
+      price: parseInt(Math.random() * 9999),
+      id: parseInt(Math.random() * 9999999999999),
+    };
+    store.dispatch({ type: "ADDPRODUCT", product });
+  };
+
+  deleteProduct = (product) => {
+    store.dispatch({ type: "DELETEPRODUCT", product });
+  };
+
   render() {
+    const { products } = store.getState();
+    console.log(products, 99);
     return (
       <div>
-        <p>{store.getState()}</p>
+        {/* <p>{store.getState()}</p> */}
+        <p>{store.getState().count}</p>
+        {products.length > 0 &&
+          products.map((product) => {
+            return (
+              <div key={product.id} style={{ padding: "15px 0" }}>
+                <span>{product.productName}</span>
+                <span style={{ padding: "0 20px" }}>￥{product.price}</span>
+                <button
+                  onClick={() => {
+                    this.deleteProduct(product);
+                  }}
+                >
+                  删除
+                </button>
+              </div>
+            );
+          })}
         <button onClick={this.addCount}>increase</button>
         <button onClick={this.decreaseCount}>decrease</button>
         <button onClick={this.asyncAddCount}>async increase</button>
         <button onClick={this.promiseAddCount}>promise increase</button>
+        <button
+          onClick={() => {
+            this.addProduct();
+          }}
+        >
+          添加商品
+        </button>
       </div>
     );
   }
