@@ -114,7 +114,12 @@ function compose(...funcs) {
   if (funcs.length === 1) {
     return funcs[0];
   }
-  return funcs.reduce((prev, cur) => (...args) => prev(cur(...args)));
+  // return funcs.reduce((prev, cur) => (...args) => prev(cur(...args)));
+  return funcs.reduce(function (prev, cur) {
+    return function (...args) {
+      prev(cur(...args));
+    };
+  });
 }
 
-const res = compose(f1, f2, f3)("ljmissir");
+compose(f1, f2, f3)("ljmissir");

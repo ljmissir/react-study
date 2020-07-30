@@ -6,10 +6,13 @@ import RCForm from "./pages/day01/RCForm";
 import MyRCForm from "./pages/day01/MyRCForm";
 import ReduxPage from "./pages/day02/ReduxPage";
 import ReactReduxPage from "./pages/day03/ReactReduxPage";
+import HocPage from "./pages/day01/HocPage";
 import "./App.css";
 
+const WrapperComp = HocPage(ReactReduxPage);
+
 function App(props) {
-  return <ReactReduxPage />;
+  return <WrapperComp />;
 }
 
 export default App;
