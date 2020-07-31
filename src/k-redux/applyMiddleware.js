@@ -1,4 +1,4 @@
-import { compose, curry } from "../utils";
+import { compose } from "../utils";
 
 // !实现applyMiddleware()中间件
 export default function applyMiddleware(...middlewares) {

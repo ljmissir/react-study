@@ -4,6 +4,7 @@ export default function createStore(reducer, enhancer) {
     // !传入createStore和reducer
     return enhancer(createStore)(reducer);
   }
+
   let currentState;
   let currentListeners = [];
 
