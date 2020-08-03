@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { RouterContext } from "./Context";
 
 class Router extends Component {
+  static computeRootMatch(pathname) {
+    return { path: "/", url: "/", params: {}, isExact: pathname === "/" };
+  }
+
   constructor(props) {
     super(props);
 
@@ -9,7 +13,7 @@ class Router extends Component {
       location: props.history.location,
     };
 
-    const unlisten = props.history.listen((location) => {
+    this.unlisten = props.history.listen((location) => {
       this.setState({ location });
     });
   }
@@ -23,9 +27,14 @@ class Router extends Component {
   render() {
     const { children, history } = this.props;
     const { location } = this.state;
-    console.log(this.props);
     return (
-      <RouterContext.Provider value={{ history, location }}>
+      <RouterContext.Provider
+        value={{
+          history,
+          location,
+          match: Router.computeRootMatch(this.state.location.pathname),
+        }}
+      >
         {children}
       </RouterContext.Provider>
     );

@@ -14,6 +14,7 @@ import UserPage from "./pages/day04/UserPage";
 import LoginPage from "./pages/day04/LoginPage";
 import _404Page from "./pages/day04/_404Page";
 import Product from "./pages/day04/Product";
+import WelcomePage from "./pages/day04/WelcomePage";
 
 // import {
 //   BrowserRouter as Router,
@@ -37,12 +38,12 @@ import {
   useHistory,
   useLocation,
   useParams,
-  withRouter,
   Prompt,
 } from "./k-react-router-dom";
 
 // const WrapperComp = HocPage(HooksPage);
 
+// !react-router 组件有三种渲染方式，优先级依次为 children > component > render
 function App(props) {
   return (
     <div className="app">
@@ -56,26 +57,36 @@ function App(props) {
           商品
         </Link>
 
-        {/* <Switch> */}
-        <Route
-          exact
-          path="/"
-          //children={children}
-          component={HomePage}
-          //render={render}
-        >
-          {/* children 0000 */}
-        </Route>
-        <Route path="/user" component={UserPage} />
-        <Route path="/login" component={LoginPage} />
-        {/* <Route path="/product/:id" component={Product} /> */}
-        <Route path="/product/:id" render={() => <Product />} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            // children={children}
+            component={HomePage}
+            // render={render}
+          >
+            {/* children 0000 */}
+          </Route>
+          <Route path="/user" component={UserPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/welcome" component={WelcomePage} />
+          <Route path="/product/:id" render={() => <Product />} />
 
-        <Route component={_404Page} />
-        {/* </Switch> */}
+          <Route component={_404Page} />
+        </Switch>
       </Router>
     </div>
   );
 }
 
 export default App;
+
+function children(props) {
+  console.log("children props", props); //sy-log
+  return <div>children</div>;
+}
+
+function render(props) {
+  console.log("render props", props); //sy-log
+  return <div>render</div>;
+}
