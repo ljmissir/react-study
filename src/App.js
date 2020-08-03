@@ -90,3 +90,14 @@ function render(props) {
   console.log("render props", props); //sy-log
   return <div>render</div>;
 }
+
+/**
+ * ! 我们传给setTimeout的每一个函数表达式实际上都引用了相同作用域里的同一个i;
+ * ! setTimeout会在若干毫秒的延时后执行一个函数，并且是在for循环结束后;
+ * ! for循环结束后，i的值为10。 所以当函数被调用的时候，它会打印出10。
+ */
+for (var i = 0; i < 10; i++) {
+  setTimeout(function () {
+    console.log(i);
+  }, 1000 * i);
+}
