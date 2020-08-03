@@ -13,9 +13,6 @@ export default class Redirect extends Component {
               onMount={() => {
                 push ? history.push(to) : history.replace(to);
               }}
-              onUnmount={(self) => {
-                self.release();
-              }}
             />
           );
         }}
@@ -28,12 +25,6 @@ class LifeCycle extends Component {
   componentDidMount() {
     if (this.props.onMount) {
       this.props.onMount.call(this, this);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.onUnmount) {
-      this.props.onUnmount.call(this, this);
     }
   }
 
