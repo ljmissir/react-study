@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default class LifeCycle extends React.Component {
+export default class LifeCycle extends Component {
   componentDidMount() {
     if (this.props.onMount) {
       this.props.onMount.call(this, this);
@@ -8,6 +8,7 @@ export default class LifeCycle extends React.Component {
   }
 
   componentWillUnmount() {
+    console.log("componentWillUnmount", this);
     if (this.props.onUnmount) {
       this.props.onUnmount.call(this, this);
     }
