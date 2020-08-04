@@ -12,6 +12,7 @@ export default class LifeCycle extends React.Component {
       this.props.onUnmount.call(this, this);
     }
   }
+
   render() {
     return null;
   }
