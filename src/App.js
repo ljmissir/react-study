@@ -9,12 +9,13 @@ import React from "react";
 // import HocPage from "./pages/day01/HocPage";
 // import HooksPage from "./pages/day03/HooksPage";
 import "./App.css";
-import HomePage from "./pages/day04/HomePage";
-import UserPage from "./pages/day04/UserPage";
-import LoginPage from "./pages/day04/LoginPage";
-import _404Page from "./pages/day04/_404Page";
-import Product from "./pages/day04/Product";
-import WelcomePage from "./pages/day04/WelcomePage";
+// import HomePage from "./pages/day04/HomePage";
+// import UserPage from "./pages/day04/UserPage";
+// import LoginPage from "./pages/day04/LoginPage";
+// import _404Page from "./pages/day04/_404Page";
+// import Product from "./pages/day04/Product";
+// import WelcomePage from "./pages/day04/WelcomePage";
+import Router from "./router";
 
 // import {
 //   BrowserRouter as Router,
@@ -29,25 +30,26 @@ import WelcomePage from "./pages/day04/WelcomePage";
 //   Prompt,
 // } from "react-router-dom";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  useRouteMatch,
-  useHistory,
-  useLocation,
-  useParams,
-  Prompt,
-} from "./k-react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Link,
+//   Switch,
+//   useRouteMatch,
+//   useHistory,
+//   useLocation,
+//   useParams,
+//   Prompt,
+// } from "./k-react-router-dom";
 
 // const WrapperComp = HocPage(HooksPage);
 
 // !react-router 组件有三种渲染方式，优先级依次为 children > component > render
 function App(props) {
   return (
-    <div className="app">
-      <Router>
+    <div className="app" style={{ padding: "20px" }}>
+      <Router />
+      {/* <Router>
         <Link to="/">首页</Link>
         <Link to="/user" style={{ padding: "0 20px" }}>
           用户中心
@@ -61,11 +63,8 @@ function App(props) {
           <Route
             exact
             path="/"
-            // children={children}
             component={HomePage}
-            // render={render}
           >
-            {/* children 0000 */}
           </Route>
           <Route path="/user" component={UserPage} />
           <Route path="/login" component={LoginPage} />
@@ -74,12 +73,13 @@ function App(props) {
 
           <Route component={_404Page} />
         </Switch>
-      </Router>
+      </Router> */}
     </div>
   );
 }
 
 export default App;
+/**
 
 function children(props) {
   console.log("children props", props); //sy-log
@@ -90,14 +90,16 @@ function render(props) {
   console.log("render props", props); //sy-log
   return <div>render</div>;
 }
+*
+ */
 
 /**
  * ! 我们传给setTimeout的每一个函数表达式实际上都引用了相同作用域里的同一个i;
  * ! setTimeout会在若干毫秒的延时后执行一个函数，并且是在for循环结束后;
  * ! for循环结束后，i的值为10。 所以当函数被调用的时候，它会打印出10。
  */
-for (var i = 0; i < 10; i++) {
-  setTimeout(function () {
-    console.log(i);
-  }, 1000 * i);
-}
+// for (var i = 0; i < 10; i++) {
+//   setTimeout(function () {
+//     console.log(i);
+//   }, 1000 * i);
+// }

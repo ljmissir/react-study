@@ -1,10 +1,17 @@
-// import { createStore, applyMiddleware, combineReducers } from "redux";
-import { createStore, applyMiddleware, combineReducers } from "../k-redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+// import { createStore, applyMiddleware, combineReducers } from "../k-redux";
+import createSagaMiddleware from "redux-saga";
+import loginSaga from "../actions/loginSaga";
 import reducers from "./reducers";
 import isPromise from "is-promise";
 
-const store = createStore(reducers, applyMiddleware(logger, thunk, promise));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+// const store = createStore(reducers, applyMiddleware(logger, thunk, promise));
 // const store = applyMiddleware(logger, thunk)(createStore)(reducer);
+
+sagaMiddleware.run(loginSaga);
 
 export default store;
 
