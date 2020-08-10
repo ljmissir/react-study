@@ -1,21 +1,37 @@
-import React from "react";
+// import React from "react";
+// !day01
 // import ContextPage from "./pages/day01/ContextPage";
 // import MyRCFieldForm from "./pages/day01/MyRCFieldForm";
 // import RCFieldForm from "./pages/day01/RCFieldForm";
 // import RCForm from "./pages/day01/RCForm";
 // import MyRCForm from "./pages/day01/MyRCForm";
+// import HocPage from "./pages/day01/HocPage";
+// !day02
 // import ReduxPage from "./pages/day02/ReduxPage";
 // import ReactReduxPage from "./pages/day03/ReactReduxPage";
-// import HocPage from "./pages/day01/HocPage";
+// !day03
 // import HooksPage from "./pages/day03/HooksPage";
 import "./App.css";
+// !day04
 // import HomePage from "./pages/day04/HomePage";
 // import UserPage from "./pages/day04/UserPage";
 // import LoginPage from "./pages/day04/LoginPage";
 // import _404Page from "./pages/day04/_404Page";
 // import Product from "./pages/day04/Product";
 // import WelcomePage from "./pages/day04/WelcomePage";
+// !day05
 import Router from "./router";
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Link,
+//   Switch,
+//   useRouteMatch,
+//   useHistory,
+//   useLocation,
+//   useParams,
+//   Prompt,
+// } from "./k-react-router-dom";
 
 // import {
 //   BrowserRouter as Router,
@@ -30,17 +46,10 @@ import Router from "./router";
 //   Prompt,
 // } from "react-router-dom";
 
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Link,
-//   Switch,
-//   useRouteMatch,
-//   useHistory,
-//   useLocation,
-//   useParams,
-//   Prompt,
-// } from "./k-react-router-dom";
+// !day06
+// !day07
+import React from "./k-react/index";
+// import KReactPage from "./pages/day07/KReactPage";
 
 // const WrapperComp = HocPage(HooksPage);
 
@@ -48,7 +57,7 @@ import Router from "./router";
 function App(props) {
   return (
     <div className="app" style={{ padding: "20px" }}>
-      <Router />
+      {/* <Router /> */}
       {/* <Router>
         <Link to="/">首页</Link>
         <Link to="/user" style={{ padding: "0 20px" }}>
@@ -74,6 +83,7 @@ function App(props) {
           <Route component={_404Page} />
         </Switch>
       </Router> */}
+      {/* <KReactPage /> */}
     </div>
   );
 }
